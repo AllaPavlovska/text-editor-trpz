@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Текстовий редактор — Лабораторна №3</title>
+<style>
+  body { font-family: sans-serif; background: #f0f2f5; padding: 20px; }
+  .card { background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 16px; margin-bottom: 20px; }
+  h3 { margin-top: 0; color: #1e293b; border-bottom: 2px solid #3b82f6; padding-bottom: 6px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; }
+  th, td { border: 1px solid #cbd5e1; padding: 8px; text-align: left; }
+  th { background: #f8fafc; }
+  input, select, textarea { width: 100%; padding: 6px; margin-top: 4px; margin-bottom: 10px; box-sizing: border-box; }
+  textarea { height: 110px; background: #0f172a; color: #f8fafc; font-family: monospace; }
+  button { background: #2563eb; color: #fff; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h3>Візуальна Форма №1: MainEditorWindow (Редактор тексту, кодування та підсвічування)</h3>
+  <div class="grid">
+    <div>
+      <b>Документи в SQLite (DocumentRepository):</b>
+      <table><tr><th>ID</th><th>Файл</th><th>Кодування</th></tr><tr><td>1</td><td><b>main.py</b></td><td>UTF-8</td></tr><tr><td>2</td><td><b>main.py</b></td><td>UTF-8</td></tr></table>
+      <p><b>Перехід на рядок:</b> <input type="number" value="2" style="width:70px;"> <button>Перейти</button></p>
+    </div>
+    <div>
+      <label>Назва файлу:</label><input value="main.py">
+      <label>Кодування:</label><select><option>UTF-8</option><option>UTF-16</option><option>Windows-1251</option></select>
+      <label>Текст програми (Python):</label>
+      <textarea>def hello():
+    print('Hello KPI!')
+
+hello()</textarea>
+      <button onclick="alert('Збережено в БД через DocumentRepository!')">Зберегти зміни в БД</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Візуальна Форма №2: SnippetBookmarkManager (Менеджер закладок та сніппетів у БД)</h3>
+  <div class="grid">
+    <div>
+      <b>Закладки документа (BookmarkRepository):</b>
+      <table><tr><th>ID</th><th>Рядок</th><th>Нотатка</th></tr><tr><td>1</td><td>Рядок 2</td><td>Точка виводу привітання</td></tr></table>
+      <label>Нова закладка (Рядок / Опис):</label>
+      <input placeholder="Рядок: 4 — Перевірка циклу">
+      <button>Додати закладку в SQLite</button>
+    </div>
+    <div>
+      <b>Сніппети коду (SnippetRepository):</b>
+      <table><tr><th>ID</th><th>Назва</th><th>Тригер</th></tr><tr><td>2</td><td>Main block</td><td><code>ifmain</code></td></tr></table>
+      <label>Новий сніппет (Тригер / Шаблон):</label>
+      <input placeholder="tryex -> try...except">
+      <button>Додати сніппет в SQLite</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
